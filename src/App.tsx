@@ -13,9 +13,7 @@ function App() {
 
   return (
     <div>
-      <h1 className="text-2xl font-sans bg-green-300 text-center">
-        Hello World
-      </h1>
+      <p>Hello World</p>
     </div>
   );
 }

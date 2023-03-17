@@ -1,19 +1,50 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
+import { useFetch } from "./useFetch";
 
 // const URL = "http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com";
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [query, setQuery] = useState<string>("");
+
+  const [page, setPage] = useState<number>(1);
+
+  const query = `/user/${page}/15`
+
+  const { loading, error, list } = useFetch(query, page);
+
+  const loader = useRef(null);
+
+  const handleObserver = useCallback((entries: any) => {
+    const target = entries[0];
+    if (target.isInteracting) {
+      setPage((prev) => prev + 1);
+    }
+  }, []);
 
   useEffect(() => {
-    fetch(`${URL}/user/1/10`)
-      .then((res) => res.json())
-      .then((data) => console.log(data));
-  }, []);
+    const option = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+
+    if (loader.current) {
+      observer.observe(loader.current);
+    }
+  }, [handleObserver]);
 
   return (
     <div>
-      <p>Hello World</p>
+      <h1>Infinite Scroll</h1>
+      <h2></h2>
+      {list.map((item, i) => {
+        <div key={i}>{item.name}User</div>;
+      })}
+      {loading && <div>Loading...</div>}
+      {error && <div>Error</div>}
+      <div ref={loader}></div>
     </div>
   );
 }

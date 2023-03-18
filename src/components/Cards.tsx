@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef } from "react";
+import Loading from "./Loading";
 
 import UserCard from "./UserCard";
 
@@ -38,7 +39,7 @@ function Cards({ usersData, setPageNumber, loading, error }: CardsProps) {
         usersData.map((user: any, idx: number) => (
           <UserCard key={idx} user={user} />
         ))}
-      {loading && <p>Loading...</p>}
+      {loading && <Loading />}
       {error && <p>Error!</p>}
       {<div ref={loader} />}
     </div>

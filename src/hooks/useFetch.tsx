@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 interface UseFetchTypes {
   loading: boolean;
@@ -23,7 +23,7 @@ function useFetch(page: number, size: number, userId?: string): UseFetchTypes {
   } else if (page && userId && size) {
     CUSTOM_URL = `${BASE_URL}${userId}/friends/${page}/${size}`;
   } else {
-    CUSTOM_URL = `${BASE_URL}/user/${page}/12`;
+    CUSTOM_URL = `${BASE_URL}/user/${page}/10`;
   }
 
   const sendQuery = useCallback(async () => {

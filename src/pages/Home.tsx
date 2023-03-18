@@ -4,7 +4,7 @@ import useFetch from "../hooks/useFetch";
 
 function Home() {
   const [pageNumber, setPageNumber] = useState(1);
-  const { loading, error, list } = useFetch(pageNumber, 20);
+  const { loading, error, list } = useFetch(pageNumber, 10);
 
   return (
     <div className="max-w-[1200px] p-3 m-auto">

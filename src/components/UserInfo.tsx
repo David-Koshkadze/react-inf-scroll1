@@ -17,7 +17,7 @@ function UserInformation({ userInfo }: UserInfoProps) {
   const { city, country, state, streetAddress, zipCode } = userInfo.address;
   return (
     <div className="f-wull flex flex-col lg:flex-row justify-between items-center p-[20px]">
-      <img src={imageUrl} alt={name} className="h-[200px]"/>
+      <img src={imageUrl} alt={name} className="h-[200px]" />
       <fieldset className="border-2 border-solid border-gray-500 p-3 w-full mx-[10px] justify-evenly">
         <legend>Info</legend>
         <div className="mb-4">
@@ -44,10 +44,7 @@ function UserInformation({ userInfo }: UserInfoProps) {
         </div>
       </fieldset>
 
-      <fieldset
-        id="fieldset2"
-        className="border-2 border-solid border-gray-500 p-3"
-      >
+      <fieldset className="border-2 border-solid border-gray-500 p-3">
         <legend>Address</legend>
         <strong>
           {userInfo.company.name} {userInfo.company.suffix}{" "}

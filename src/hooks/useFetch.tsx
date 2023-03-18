@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 
 interface UseFetchTypes {
   loading: boolean;
@@ -9,7 +9,7 @@ interface UseFetchTypes {
 
 function useFetch(page: number, size: number, userId?: string): UseFetchTypes {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<boolean | string>(false);
+  const [error, setError] = useState<boolean>(false);
   const [list, setList] = useState<any[]>([]);
 
   const BASE_URL = `http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com`;
@@ -34,7 +34,7 @@ function useFetch(page: number, size: number, userId?: string): UseFetchTypes {
         setList((prev) => [...prev, ...res.data.list]);
         setLoading(false);
       });
-    } catch (err) {
+    } catch (err: any) {
       setError(err);
       setLoading(false);
     }

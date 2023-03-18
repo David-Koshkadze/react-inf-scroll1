@@ -1,6 +1,11 @@
 import { createContext, ReactNode, useState } from "react";
 
-export const UsersHistoryContext = createContext({});
+interface ContextType {
+  usersHistory?: any[],
+  setUsersHistory?: any;
+}
+
+export const UsersHistoryContext = createContext<ContextType>({});
 
 const UsersProviderComponent = ({ children }: { children: ReactNode }) => {
   const [usersHistory, setUsersHistory] = useState([]);

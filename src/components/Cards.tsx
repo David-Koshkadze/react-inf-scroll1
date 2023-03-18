@@ -35,7 +35,9 @@ function Cards({ usersData, setPageNumber, loading, error }: CardsProps) {
   return (
     <div className="w-full grid grid-cols-2 md:grid-cols-4 grid-rows-1 gap-4 ">
       {usersData &&
-        usersData.map((user: any) => <UserCard key={user.id} user={user} />)}
+        usersData.map((user: any, idx: number) => (
+          <UserCard key={idx} user={user} />
+        ))}
       {loading && <p>Loading...</p>}
       {error && <p>Error!</p>}
       {<div ref={loader} />}

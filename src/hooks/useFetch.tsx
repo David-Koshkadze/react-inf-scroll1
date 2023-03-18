@@ -7,7 +7,7 @@ interface UseFetchTypes {
   list: any[];
 }
 
-function useFetch(page: number, size: number, userId: number): UseFetchTypes {
+function useFetch(page: number, size: number, userId?: number): UseFetchTypes {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<boolean | string>(false);
   const [list, setList] = useState<any[]>([]);

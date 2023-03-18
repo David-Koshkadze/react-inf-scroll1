@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Cards from "../components/Cards";
-import useFetch from "../hook/useFetch";
+import useFetch from "../hooks/useFetch";
 
 function Home() {
   const [pageNumber, setPageNumber] = useState(1);

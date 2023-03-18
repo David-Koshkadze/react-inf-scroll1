@@ -4,7 +4,7 @@ import axios from "axios";
 
 const URL = "http://sweeftdigital-intern.eu-central-1.elasticbeanstalk.com";
 
-export function useFetch(query: string, page: number) {
+export function useFetch(query: string) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(false);
   const [list, setList] = useState<any[]>([]);
@@ -15,20 +15,20 @@ export function useFetch(query: string, page: number) {
         setLoading(true);
         setError(false);
         const res = await axios.get(URL + q);
-        console.log(res)
-        await setList((prev) => [...prev, ...res.data.list]);
-        console.log(list); 
+        console.log("Response: ", res);
+        setList((prev) => [...prev, res.data]);
+        console.log("List: ", list);
         setLoading(false);
       } catch (err) {
         setError(err);
       }
     },
-    [query, page]
+    [query]
   );
 
   useEffect(() => {
     sendQuery(query);
-  }, [query, sendQuery, page]);
+  }, [query, sendQuery]);
 
   return { loading, error, list };
 }

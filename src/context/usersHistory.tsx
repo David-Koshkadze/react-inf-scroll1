@@ -1,14 +1,14 @@
 import { createContext, ReactNode, useState } from "react";
 
-export const usersHistoryContext = createContext();
+export const UsersHistoryContext = createContext({});
 
 const UsersProviderComponent = ({ children }: { children: ReactNode }) => {
   const [usersHistory, setUsersHistory] = useState([]);
 
   return (
-    <usersHistoryContext.Provider value={{ usersHistory, setUsersHistory }}>
+    <UsersHistoryContext.Provider value={{ usersHistory, setUsersHistory }}>
       {children}
-    </usersHistoryContext.Provider>
+    </UsersHistoryContext.Provider>
   );
 };
 

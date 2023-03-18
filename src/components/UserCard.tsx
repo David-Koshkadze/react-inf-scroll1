@@ -1,12 +1,12 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 
-import { usersHistoryContext } from "../context/usersHistory"
+import { UsersHistoryContext } from "../context/usersHistory";
 
 function UserCard({ user }: { user: any }) {
   const { id, imageUrl, lastName, name, prefix, title } = user;
 
-  const { setUsersHistory } = useContext(usersHistoryContext);
+  const { setUsersHistory } = useContext(UsersHistoryContext);
 
   const onClick = () => {
     setUsersHistory((users: any) => [...users, user]);
@@ -14,9 +14,9 @@ function UserCard({ user }: { user: any }) {
   };
 
   return (
-    <a
-      className="w-full no-underline border-solid divide-[#ccc] flex flex-col items-center justify-start"
-      as={Link}
+    <Link
+      className="w-full no-underline flex flex-col items-center justify-start"
+      style={{ border: "1px solid #ccc" }}
       to={`/user/${id}`}
       onClick={onClick}
     >
@@ -27,7 +27,7 @@ function UserCard({ user }: { user: any }) {
         </h3>
         <p>{title}</p>
       </div>
-    </a>
+    </Link>
   );
 }
 

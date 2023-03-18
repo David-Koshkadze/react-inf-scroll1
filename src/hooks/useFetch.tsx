@@ -23,7 +23,7 @@ function useFetch(page: number, size: number, userId?: number): UseFetchTypes {
   } else if (page && userId && size) {
     CUSTOM_URL = `${BASE_URL}${userId}/friends/${page}/${size}`;
   } else {
-    CUSTOM_URL = `${BASE_URL}/user/${page}/20`;
+    CUSTOM_URL = `${BASE_URL}/user/${page}/12`;
   }
 
   const sendQuery = useCallback(async () => {

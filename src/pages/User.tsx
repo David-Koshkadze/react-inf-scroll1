@@ -30,7 +30,7 @@ function User() {
 
   return (
     <div
-      className="my-10 mx-auto p-[10px] max-w-[1200px] flex flex-col"
+      className="mx-auto p-[10px] max-w-[1200px] flex flex-col"
       style={{ border: "1px solid #ccc" }}
     >
       {userInfo && <UserInfo userInfo={userInfo} />}
